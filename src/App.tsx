@@ -140,8 +140,8 @@ function App() {
   const handleFiles = (file: File) => {
     if (file.type.startsWith('image/')) {
       const reader = new FileReader();
-      reader.onload = (e) => {
-        if (e.target && typeof e.target.result === 'string') {
+      reader.onload = (e: ProgressEvent<FileReader>) => {
+        if (e.target && e.target.result && typeof e.target.result === 'string') {
           setPreviewImage(e.target.result);
         }
       };
@@ -149,7 +149,7 @@ function App() {
     }
   };
 
-  const handleInputChange = (name: keyof FormValues, value: any) => {
+  const handleInputChange = (name: keyof FormValues, value: string | number) => {
     setFormValues(prev => ({
       ...prev,
       [name]: value
@@ -262,7 +262,7 @@ function App() {
 
                   {/* Text overlay */}
                   <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center w-4/5 flex flex-col gap-2 hover:translate-y-1 transition-transform duration-300">
-                    {formValues.shirtText.split('\n').slice(0, 3).map((line, idx) => (
+                  {formValues.shirtText.split('\n').slice(0, 3).map((line: string, idx: number) => (
                       <div key={idx} className="text-base font-semibold leading-tight break-words" style={{ color: shirtColor === '#FFFFFF' ? theme.text : shirtColor === '#000000' ? '#FFFFFF' : '#000000' }}>
                         {line}
                       </div>
