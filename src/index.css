@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: "Poppins", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, sans-serif;
+}
+
+@theme {
+  /* Scale utilities */
+  --scale-102: 1.02;
+  --scale-115: 1.15;
+
+  /* Animation shorthand utilities */
+  --animate-fade-in: fadeIn 1s ease forwards 0.3s;
+  --animate-slide-right: slideRight 1s ease forwards;
+  --animate-slide-left: slideLeft 1s ease forwards;
+  --animate-border-slide-right: borderSlideRight 1.5s ease forwards;
+  --animate-border-slide-left: borderSlideLeft 1.5s ease forwards;
+
+  /* Keyframe definitions */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes slideRight {
+    from {
+      transform: translateX(-50px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  @keyframes slideLeft {
+    from {
+      transform: translateX(50px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  @keyframes borderSlideRight {
+    from {
+      width: 0;
+    }
+    to {
+      width: 30%;
+    }
+  }
+  @keyframes borderSlideLeft {
+    from {
+      width: 0;
+    }
+    to {
+      width: 30%;
+    }
+  }
+}
